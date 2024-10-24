@@ -8,18 +8,27 @@ def solve_quadratic(request):
     c = float(request.GET.get('c', 0))
 
     equation = f"{a}x² + {b}x + {c} = 0"
-
-    discriminant = b**2 - 4*a*c
-
-    if discriminant > 0:
-        x1 = (-b + math.sqrt(discriminant)) / (2*a)
-        x2 = (-b - math.sqrt(discriminant)) / (2*a)
-        roots = f"Два корня: x₁ = {x1}, x₂ = {x2}"
-    elif discriminant == 0:
-        x = -b / (2*a)
-        roots = f"Один корень: x = {x}"
+    if a == 0 :
+        if b == 0:
+            if c == 0:
+                roots = "Уравнение имеет бесконечно много решений."
+            else:
+                roots = "Уравнение не имеет решений."
+        else:
+            x = -c / b
+            roots = f"Линейное уравнение: x = {x}"
     else:
-        roots = "Нет действительных корней"
+        discriminant = b**2 - 4*a*c
+
+        if discriminant > 0:
+            x1 = (-b + math.sqrt(discriminant)) / (2*a)
+            x2 = (-b - math.sqrt(discriminant)) / (2*a)
+            roots = f"Два корня: x₁ = {x1}, x₂ = {x2}"
+        elif discriminant == 0:
+            x = -b / (2*a)
+            roots = f"Один корень: x = {x}"
+        else:
+            roots = "Нет действительных корней"
 
     context = {
         'equation': equation,
