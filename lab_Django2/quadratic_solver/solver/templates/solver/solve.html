@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Решение уравнения</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6dd5fa, #a1c4fd);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        .container {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin: 20px;
+        }
+        button {
+            background: linear-gradient(135deg, #4a90e2, #005bea);
+            border: none;
+            border-radius: 30px;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease;
+            margin-top: 20px;
+        }
+        button:hover {
+            background: linear-gradient(135deg, #005bea, #4a90e2);
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Уравнение: {{ equation }}</h1>
+        {% if roots %}
+            <h2>Корни:</h2>
+            <ul>
+                {% for root in roots %}
+                    <li>{{ root }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <h2>Корней нет</h2>
+        {% endif %}
+        <button onclick="goToTrainer()">Перейти к тренажеру</button>
+    </div>
+
+    <script>
+        function goToTrainer() {
+            window.location.href = '/solver/trainer';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Результат проверки</title>
+</head>
+<body>
+    {% if correct %}
+        <h1>Поздравляем! Ваш ответ правильный!</h1>
+    {% else %}
+        <h1>Ответ неверный.</h1>
+        <p>Ваши корни: {{ user_roots.0 }} и {{ user_roots.1 }}</p>
+        <p>Правильные корни: {{ actual_roots.0 }}{% if actual_roots|length > 1 %} и {{ actual_roots.1 }}{% endif %}</p>
+    {% endif %}
+    <a href="{% url 'trainer' %}">Попробовать другое уравнение</a>
+</body>
+</html>
